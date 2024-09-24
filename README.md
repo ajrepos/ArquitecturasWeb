@@ -1,27 +1,63 @@
 # Modelo Vista Controlador (MVC)
 
-## Introducción
+## ¿Qué es el MVC?
 
-El **Modelo Vista Controlador (MVC)** es un patrón de diseño de software ampliamente utilizado en el desarrollo de aplicaciones. Divide una aplicación en tres componentes principales:
+El **Modelo Vista Controlador (MVC)** es un patrón de diseño arquitectónico que separa una aplicación en tres componentes interconectados:
 
-- **Modelo (Model)**: Gestiona los datos y la lógica de la aplicación.
-- **Vista (View)**: Presenta los datos al usuario, generalmente a través de una interfaz gráfica.
-- **Controlador (Controller)**: Actúa como un intermediario entre el modelo y la vista, procesando la lógica de negocio y las solicitudes del usuario.
-
-Este patrón facilita la separación de preocupaciones, lo que hace que el código sea más modular, mantenible y escalable.
+- **Modelo (Model)**: Representa los datos y la lógica de la aplicación. El modelo gestiona el acceso y las actualizaciones de los datos.
+- **Vista (View)**: Es la interfaz gráfica con la que interactúa el usuario. Se encarga de mostrar los datos al usuario, formateados y estructurados de manera adecuada.
+- **Controlador (Controller)**: Gestiona la interacción del usuario, envía la entrada del usuario al modelo y determina qué vista debe mostrarse. Actúa como intermediario entre el modelo y la vista.
 
 ---
 
-## Componentes del MVC
+## Ventajas del patrón MVC
 
-### 1. **Modelo (Model)**
-El modelo es la capa encargada de la gestión de datos. Es responsable de manejar la lógica de la aplicación relacionada con los datos, como consultar bases de datos, aplicar reglas de negocio y responder a las peticiones del controlador.
+- **Separación de responsabilidades**: Al dividir la aplicación en tres componentes distintos, cada uno con una función específica, es más fácil mantener y escalar la aplicación.
+- **Reutilización de componentes**: Permite reutilizar tanto el código del modelo como el de las vistas para diferentes controladores o plataformas.
+- **Facilita el mantenimiento**: Al separar la lógica de negocio (modelo) de la presentación (vista), los cambios en una parte no afectan directamente a las otras.
 
-```plaintext
-class Producto:
-    def __init__(self, nombre, precio):
-        self.nombre = nombre
-        self.precio = precio
+---
 
-    def obtener_precio_con_descuento(self, porcentaje_descuento):
-        return self.precio - (self.precio * porcentaje_descuento / 100)
+## Descripción de los componentes
+
+1. **Modelo (Model)**: 
+   - Es responsable de acceder a los datos, aplicando reglas de negocio.
+   - Puede estar vinculado a una base de datos, una API o cualquier fuente de información.
+   - Notifica a la vista cuando los datos cambian para que ésta se actualice.
+
+2. **Vista (View)**: 
+   - Es la interfaz de usuario. Se centra en cómo se muestran los datos del modelo.
+   - Su trabajo es exclusivamente visual: presentar la información sin modificarla.
+   - Puede ser una página web, una aplicación móvil o un sistema embebido.
+
+3. **Controlador (Controller)**: 
+   - Actúa como intermediario entre el modelo y la vista.
+   - Procesa las entradas del usuario y actualiza el modelo en consecuencia.
+   - Después, decide qué vista mostrar en función de los datos actualizados del modelo.
+
+---
+
+## Flujo de trabajo en MVC
+
+1. El usuario interactúa con la **Vista** (ejemplo: hace clic en un botón).
+2. La **Vista** pasa la solicitud al **Controlador**.
+3. El **Controlador** procesa la solicitud y actualiza el **Modelo** si es necesario.
+4. El **Modelo** envía datos actualizados a la **Vista**.
+5. La **Vista** muestra los datos actualizados al usuario.
+
+---
+
+## Ejemplo visual
+
+Imagina una tienda en línea:
+- El **Modelo** contiene los productos, precios y descripciones.
+- La **Vista** es la página web que muestra esos productos al usuario.
+- El **Controlador** gestiona las acciones del usuario, como agregar un producto al carrito o finalizar una compra.
+
+---
+
+## Enlace a un video para más información
+
+Si quieres profundizar más en el concepto, te dejo un enlace a un video de YouTube que explica el patrón MVC:
+
+[🔗 Entendiendo el Patrón MVC - Video YouTube](https://www.youtube.com/watch?v=OnaWnh5cPgw)
